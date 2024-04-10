@@ -22,6 +22,12 @@ import numpy as np
 
 keys = ['.','t', 'i', 'e', '5', 'o', 'a','n', '1']
 
+#Dataframe for rows
+#df = pd.DataFrame(columns=['subject','sessionIndex','rep','H.period','DD.period.t','UD.period.t','H.t','DD.t.i','UD.t.i','H.i','DD.i.e','UD.i.e','H.e','DD.e.five','UD.e.five','H.five','DD.five.Shift.r','UD.five.Shift.r','H.Shift.r','DD.Shift.r.o','UD.Shift.r.o','H.o','DD.o.a','UD.o.a','H.a','DD.a.n','UD.a.n','H.n','DD.n.l','UD.n.l','H.l','DD.l.Return','UD.l.Return','H.Return'])
+#df.to_csv('myData.csv')
+df = pd.read_csv('myData.csv')
+
+
 #UPDATE THIS NUMBER EACH SESSION (8 sessions)
 session_count = 1
 #Resets at 50 (50 passwords typed in a session)
@@ -46,14 +52,20 @@ def press(key):
     global rep_count
     global keystroke_count
     global keys
+    global df
+
     
     #time of press
     current_time = time.time()
 
     if key == Key.esc:
-
-        df = pd.DataFrame(rep_row)
-        print(df)
+        #FIX THIS 
+        # Creating a DataFrame from the list
+        new_row = pd.DataFrame([rep_row], columns=df.columns)
+        # Appending the new row to the DataFrame
+        df = df._append(new_row, ignore_index=True)
+        #df = pd.DataFrame(rep_row)
+        #print(df)
         #print(rep_row)
         #print(len(rep_row))
         return False
@@ -81,7 +93,6 @@ def press(key):
             rep_row.append(UpDown)
             #print('UD', UpDown)
             #keystroke_count = keystroke_count + 1
-
 
         start_times[key] = current_time
 
