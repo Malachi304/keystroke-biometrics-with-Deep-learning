@@ -26,21 +26,23 @@ keys = ['.','t', 'i', 'e', '5', 'o', 'a','n', '1']
 #df = pd.DataFrame(columns=['subject','sessionIndex','rep','H.period','DD.period.t','UD.period.t','H.t','DD.t.i','UD.t.i','H.i','DD.i.e','UD.i.e','H.e','DD.e.five','UD.e.five','H.five','DD.five.Shift.r','UD.five.Shift.r','H.Shift.r','DD.Shift.r.o','UD.Shift.r.o','H.o','DD.o.a','UD.o.a','H.a','DD.a.n','UD.a.n','H.n','DD.n.l','UD.n.l','H.l','DD.l.Return','UD.l.Return','H.Return'])
 #df.to_csv('myData.csv')
 df = pd.read_csv('myData.csv')
-
+print(df)
 
 #UPDATE THIS NUMBER EACH SESSION (8 sessions)
 session_count = 1
 #Resets at 50 (50 passwords typed in a session)
 rep_count = 0
+
 #Each password includes 11 keystrokes. Password + Enter key
 keystroke_count = 0
 
 #List of dictonaries. Each Dictonary is a row/rep (A piece of data from each category) which will be appended to data set
-rep_row = []
+rep_row = ['1','1','1']
 start_times = {}; 
 hold_time = None
 DownDown = None
 UpDown = None
+
 previous_press_time = None
 previous_up_time = None
 
@@ -61,13 +63,16 @@ def press(key):
     if key == Key.esc:
         #FIX THIS 
         # Creating a DataFrame from the list
-        new_row = pd.DataFrame([rep_row], columns=df.columns)
+        #new_row = pd.DataFrame([rep_row], columns=df.columns)
         # Appending the new row to the DataFrame
-        df = df._append(new_row, ignore_index=True)
-        #df = pd.DataFrame(rep_row)
-        #print(df)
-        #print(rep_row)
-        #print(len(rep_row))
+        df = df._append([rep_row], ignore_index=True)
+
+        # append data frame to CSV file
+        df.to_csv('myData.csv', mode='a', index=False, header=False)
+ 
+        # print message
+        print("Data appended successfully.")
+
         return False
 
     #Check if key is type 'char' and in Keys
@@ -78,7 +83,6 @@ def press(key):
                 #time between last key press and current, ie. time starts when previous key is pressed, and stops when current key is pressed (DD)
                 time_between = current_time - previous_press_time
                 DownDown = time_between
-                #print('DD', DownDown)
 
                 #adding to row 
                 rep_row.append(DownDown)
@@ -91,7 +95,6 @@ def press(key):
             time_between = current_time - previous_up_time
             UpDown = time_between
             rep_row.append(UpDown)
-            #print('UD', UpDown)
             #keystroke_count = keystroke_count + 1
 
         start_times[key] = current_time
@@ -124,7 +127,6 @@ def release(key):
         hold_time = time_between
         rep_row.append(hold_time)
 
-        #print('Hold', hold_time)
         #clear key in preporation for next
         del start_times[key]
     
