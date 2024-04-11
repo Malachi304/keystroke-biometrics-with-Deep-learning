@@ -27,9 +27,6 @@ session_count = 1
 #Resets at 50 (50 passwords typed in a session)
 rep_count = 0
 
-#Each password includes 11 keystrokes. Password + Enter key
-keystroke_count = 0
-
 #new row of data to add to dataset. Already includes userUniqueID, Session count, and Rep count
 rep_row = ['s060',session_count, rep_count]
 
@@ -47,9 +44,9 @@ def press(key):
     global DownDown
     global UpDown
     global rep_count
-    global keystroke_count
     global keys
     global rep_row
+    global start_times
 
     
     #time of press
@@ -63,19 +60,6 @@ def press(key):
     if hasattr(key, 'char') and key.char in keys or key == Key.enter or key == Key.shift:
         print(key)
 
-        if key == Key.enter:
-            if rep_count == 3:
-                return
-            rep_count = rep_count + 1
-
-            #append new row to csv       
-            with open('myData.csv', 'a', newline='') as file:
-                writer = csv.writer(file)
-                writer.writerow(rep_row)
- 
-             # print message
-            print("Data appended successfully.")
-            rep_row = rep_row[:3]
 
         #Essentially if there was a key press prior
         if previous_press_time is not None:
@@ -98,6 +82,8 @@ def press(key):
 
         #Update previous time as current time (Current key will become previous key for the next key press)
         previous_press_time = current_time
+     
+
         
         #if key is not 'shift,' or in Keys
     elif key not in keys:
@@ -108,11 +94,14 @@ def release(key):
     
     global previous_up_time
     global hold_time
-    global UpDown
-    global DownDown
-    global keystroke_count
     global keys
-    
+    global rep_row
+    global rep_count
+    global session_count
+    global start_times
+    global previous_press_time
+    global DownDown
+    global UpDown
     #time of release
     current_time = time.time()
 
@@ -124,15 +113,73 @@ def release(key):
         hold_time = time_between
         rep_row.append(hold_time)
 
+        #Used for UP DOWN time
+        previous_up_time = current_time
+
+        if key == Key.enter and len(rep_row) == 34:
+            print(len(rep_row))
+            previous_press_time = None
+            previous_up_time = None
+            hold_time = None
+            DownDown = None
+            UpDown = None
+
+            if rep_count == 50:
+                print("Session Complete")
+                return
+            rep_count = rep_count + 1
+
+            #append new row to csv       
+            with open('myData.csv', 'a', newline='') as file:
+                writer = csv.writer(file)
+                writer.writerow(rep_row)
+ 
+             # print message
+            print(f"Data appended successfully. REP: {rep_count}")
+            rep_row.clear()
+            rep_row = ['s060',session_count, rep_count]
+        elif key == Key.enter and len(rep_row) != 34:
+            previous_press_time = None
+            previous_up_time = None
+            hold_time = None
+            DownDown = None
+            UpDown = None
+            rep_row.clear()
+            rep_row = ['s060',session_count, rep_count]
+            print("Invalid, reseting")
+
+
+
         #clear key in preporation for next
         del start_times[key]
     
-    #Used for UP DOWN time
-    previous_up_time = current_time
 
 
-# Start the listener
+
+
+
+    # Start the listener
 with Listener(on_press=press, on_release=release) as listener:
     listener.join()
 
 
+'''
+        if key == Key.enter and len(rep_row)==34:
+            if rep_count == 50:
+                return
+            rep_count = rep_count + 1
+
+            #append new row to csv       
+            with open('myData.csv', 'a', newline='') as file:
+                writer = csv.writer(file)
+                writer.writerow(rep_row)
+ 
+             # print message
+            print(f"Data appended successfully. REP: {rep_count}")
+            rep_row = ['s060',session_count, rep_count]
+        elif key == Key.enter and len(rep_row) != 34:
+
+            rep_row = ['s060',session_count, rep_count]
+            print(len(rep_row))
+            print("Invalid, reseting")
+'''
