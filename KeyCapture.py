@@ -117,7 +117,6 @@ def release(key):
         previous_up_time = current_time
 
         if key == Key.enter and len(rep_row) == 34:
-            print(len(rep_row))
             previous_press_time = None
             previous_up_time = None
             hold_time = None
@@ -135,7 +134,7 @@ def release(key):
                 writer.writerow(rep_row)
  
              # print message
-            print(f"Data appended successfully. REP: {rep_count}")
+            print(f"Data appended successfully. REP: {rep_count}, Data length: {len(rep_row)}")
             rep_row.clear()
             rep_row = ['s060',session_count, rep_count]
         elif key == Key.enter and len(rep_row) != 34:
