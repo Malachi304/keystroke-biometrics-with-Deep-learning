@@ -1,5 +1,4 @@
 import tensorflow as tf
-import keras 
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
@@ -11,10 +10,6 @@ from sklearn.preprocessing import LabelEncoder
 
 
 data = pd.read_csv('Data.csv')
-#print("Unique values in the 'subject' column before filtering:")
-#print(data['subject'].unique())
-
-#data = data[data['subject'].str.isnumeric()]
 
 # Initialize LabelEncoder
 label_encoder = LabelEncoder()
@@ -22,18 +17,11 @@ label_encoder = LabelEncoder()
 # Encode the 'subject' column
 data['subject'] = label_encoder.fit_transform(data['subject'])
 
-#data['subject'] = data['subject'].str.replace('^s0+', '', regex=True)
-#data.replace({'s': 0}, inplace=True)
-#print(data.head())
 
 x = data.drop(columns=['subject'])
 y = data['subject']
 
 X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
-
-print("Unique values in y_train:", y_train.unique())
-print("Unique values in y_test:", y_test.unique())
-
 
 # Standardize features
 scaler = StandardScaler()
