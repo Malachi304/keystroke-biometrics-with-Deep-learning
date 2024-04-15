@@ -5,7 +5,7 @@ import csv
 keys = ['.','t', 'i', 'e', '5', 'o', 'a','n', '1']
 
 # UPDATE THIS NUMBER EACH SESSION (8 sessions)
-session_count = 3
+session_count = 4
 # Resets at 50 (50 passwords typed in a session)
 rep_count = 0
 
@@ -112,7 +112,7 @@ def release(key):
             UpDown = None
 
             # End session
-            if rep_count == 50:
+            if rep_count == 49:
                 print("Session Complete")
                 return
             rep_count = rep_count + 1
