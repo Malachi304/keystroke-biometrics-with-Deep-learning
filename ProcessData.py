@@ -9,10 +9,10 @@ df = pd.read_csv('newData.csv')
 
 # Remove rows where any element equals zero
 # Happens on occasion (Unkown issue, possibly latency), data does not need to be replaced until after all sessions are complete
-df_processed = df[(df != 0).all(axis=1)]
+#df_processed = df[(df != 0).all(axis=1)]
 
 # Save the filtered dataset
-df_processed.to_csv('ProcessedData.csv', index=False)
+#df_processed.to_csv('ProcessedData.csv', index=False)
 
 
 
@@ -32,28 +32,28 @@ column_mean = df[column_name].mean()
 column_mean1 = df1[column_name].mean()
 
 
-print(f"The mean of '{column_name}' column is: {column_mean}")
-print(f"The mean of '{column_name}' column is: {column_mean1}")
+print(f"The mean of '{column_name}' column is: {column_mean} for newData")
+print(f"The mean of '{column_name}' column is: {column_mean1} for Data")
 
-#from scipy.stats import ttest_ind
+from scipy.stats import ttest_ind
 # Perform independent samples t-test
 # Assume equal variances by default
-#t_statistic, p_value = ttest_ind([column_mean], [column_mean1])
+t_statistic, p_value = ttest_ind([column_mean], [column_mean1])
 
 # Set significance level
 alpha = 0.05
 
 # Print the results
-#print(f"t-statistic: {t_statistic}")
-#print(f"p-value: {p_value}")
+print(f"t-statistic: {t_statistic}")
+print(f"p-value: {p_value}")
 
-#import scipy
+import scipy
 
-#p_value = scipy.stats.norm.sf(abs(column_mean)) 
-#print('p value is : ' + str(p_value)) 
+p_value = scipy.stats.norm.sf(abs(column_mean)) 
+print('p value is : ' + str(p_value)) 
 
 # Compare p-value to significance level
-#if p_value < alpha:
-#    print("Reject the null hypothesis: Means are statistically different")
-#else:
-# print("Fail to reject the null hypothesis: Means are not statistically different")
+if p_value < alpha:
+    print("Reject the null hypothesis: Means are statistically different")
+else:
+ print("Fail to reject the null hypothesis: Means are not statistically different")
