@@ -5,7 +5,7 @@ import csv
 keys = ['.','t', 'i', 'e', '5', 'o', 'a','n', '1']
 
 # UPDATE THIS NUMBER EACH SESSION (8 sessions)
-session_count = 6
+session_count = 8
 # Resets at 50 (50 passwords typed in a session)
 rep_count = 0
 
@@ -118,7 +118,7 @@ def release(key):
             rep_count = rep_count + 1
 
             # Append new row to csv       
-            with open('newData.csv', 'a', newline='') as file:
+            with open('data/newData.csv', 'a', newline='') as file:
                 writer = csv.writer(file)
                 writer.writerow(rep_row)
  

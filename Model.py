@@ -9,7 +9,7 @@ from sklearn.preprocessing import LabelEncoder
 
 
 
-data = pd.read_csv('Data.csv')
+data = pd.read_csv('data/Data.csv')
 
 # Initialize LabelEncoder
 label_encoder = LabelEncoder()
