@@ -1,5 +1,5 @@
 
-# Analysis Of Keystoke Authentication Across Different Systems Utalizing Deep Learning 
+# Analysis Of Keystoke Authentication Across Different Systems Utalizing Deep Learning
 
 ### GOAL:
 Deep learning model for keystroke authenticaion across different systems (keyboards).
@@ -7,10 +7,13 @@ Deep learning model for keystroke authenticaion across different systems (keyboa
 ### METHOD:
 Dataset is trained on over 50 typists. Specifics for how that data was collected by origional researchers is below. 
 
-I collected my own keystroke data using a self-made keystoke capturing python script. My keystrokes are added to the training dataset in order to predict 
+I collected my own keystroke data using a self-made keystoke (logger) capturing python script,
+which collects time-stamp data of keys pressed in order to form a password. 
+My keystrokes are added to the training dataset in order to predict 
 my keystroke patterns when typing a specific password mentioned below.
 
-After training, I will pass a new set of keystrokes for prediction, using two seperate keyboards.This will measure the potential accuracy of deep learning models
+After training, I will pass a new set of keystrokes for prediction, using two seperate keyboards.
+This will measure the potential accuracy of deep learning models
 with keystokes across different systems. 
 
 ### DETAILS OF DATA CAPTURE AND PROCESSING:
