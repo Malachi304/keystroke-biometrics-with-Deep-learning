@@ -8,23 +8,7 @@ from sklearn.preprocessing import LabelEncoder
 
 
 
-data = pd.read_csv('data/Data.csv')
-data.drop(columns=['sessionIndex', 'rep'], inplace=True)
-
-
-# Select a specific subject as your target variable
-target_subject = 's002'
-
-# Encode the target variable to represent the presence or absence of the specific subject
-data['target'] = (data['subject'] == target_subject).astype(int)
-# print(data.tail())
-
-# Initialize LabelEncoder
-# label_encoder = LabelEncoder()
-
-# Encode the 'subject' column
-# data['subject'] = label_encoder.fit_transform(data['subject'])
-# data['target'] = (data['subject'] == target_subject).astype(int)
+data = pd.read_csv('data/ProcessedData.csv')
 
 
 x = data.drop(columns=['subject', 'target'])
@@ -49,7 +33,9 @@ model.compile(optimizer='adam',loss='binary_crossentropy',metrics=['accuracy'])
 
 # Train the model
 model.fit(X_train_scaled, y_train, epochs=10, batch_size=32, validation_split=0.1)
+model.save('AllModels/Pre-Outlier-processing.h5')
 
 # Evaluate the model
 loss, accuracy = model.evaluate(X_test_scaled, y_test)
 print(f'Test Loss: {loss}, Test Accuracy: {accuracy}')
+# model.predict_classes()

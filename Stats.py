@@ -1,15 +1,15 @@
 # Various Stats on data collected and model results
 
-
+import pandas as pd
 
 #==================================================
 # This next section is for testing if data from random columns 
 # in new and origional dataset are significantly different (mean)
 # based on 0.05 significance level
 #==================================================
-
+df = pd.read_csv('Data/newData.csv')
 # Load the origional dataset
-df1 = pd.read_csv('data/Data.csv')
+df1 = pd.read_csv('Data/Data.csv')
 # Specify the column for which you want to calculate the mean
 column_name = 'DD.t.i'
 print(df[column_name])

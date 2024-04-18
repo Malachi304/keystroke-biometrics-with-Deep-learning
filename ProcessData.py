@@ -15,7 +15,13 @@ df1 = pd.read_csv('data/Data.csv')
 combined_df = pd.concat([df1, df], axis=0)
 combined_df.drop(columns=['sessionIndex', 'rep'], inplace=True)
 
+target_subject = 's060'
 
+combined_df['target'] = (combined_df['subject'] == target_subject).astype(int)
+df_combined = df[(df != 0).all(axis=1)]
+
+combined_df.to_csv('Data/ProcessedData.csv', index=False)
+print("done")
 
 # Remove rows where any element equals zero
 # Happens on occasion (Unkown issue, possibly latency), data does not need to be replaced until after all sessions are complete
