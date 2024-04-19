@@ -3,7 +3,6 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from keras.models import Sequential
 from keras.layers import Dense
-from sklearn.preprocessing import LabelEncoder
 
 
 
@@ -38,4 +37,11 @@ model.save('AllModels/Pre-Outlier-processing.h5')
 # Evaluate the model
 loss, accuracy = model.evaluate(X_test_scaled, y_test)
 print(f'Test Loss: {loss}, Test Accuracy: {accuracy}')
-# model.predict_classes()
+
+df = data
+df = df.drop(columns=['subject', 'target'])
+df = df.loc[3]
+
+#Process data``
+prediction = model.predict(df)
+print(prediction)

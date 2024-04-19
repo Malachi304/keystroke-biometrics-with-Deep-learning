@@ -5,7 +5,7 @@ import csv
 keys = ['.','t', 'i', 'e', '5', 'o', 'a','n', '1']
 
 # UPDATE THIS NUMBER EACH SESSION (8 sessions)
-session_count = 8
+session_count = 1
 # Resets at 50 (50 passwords typed in a session)
 rep_count = 0
 

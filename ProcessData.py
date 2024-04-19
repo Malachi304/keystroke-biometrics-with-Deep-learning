@@ -1,41 +1,46 @@
 # Processes new data, contained in 'newData', to match origional data set 'Data'
 # Saves processed data to 'processedData' which will be combined with origional data in 'ModelData'
+#==============================================================================
 
 import pandas as pd
 
-
 # Load the new dataset captured from KeyCapture sessions
 df = pd.read_csv('data/newData.csv')
-#round decimal place
-#df = df.round(4)
-# df = df.applymap(lambda x: "{:.4f}".format(x))
-
 df1 = pd.read_csv('data/Data.csv')
+
+# Round decimal place
+df= df.round(4)
+# Combined_df = df.applymap(lambda x: "{:.4f}".format(x))
 
 # Concatinate origional data, and new data
 combined_df = pd.concat([df1, df], axis=0)
 combined_df.drop(columns=['sessionIndex', 'rep'], inplace=True)
 
+# Label encoding subject, 1 for newData, 0 for origional data
 target_subject = 's060'
-
 combined_df['target'] = (combined_df['subject'] == target_subject).astype(int)
-df_combined = df[(df != 0).all(axis=1)]
-
 combined_df.to_csv('Data/ProcessedData.csv', index=False)
-print("done")
+
+
+#==============================================================================
+# Stats on data, such as correlation between data sets
+#==============================================================================
 
 import seaborn as sns
-
 import matplotlib.pyplot as plt 
-test = combined_df
-test = test.drop(['subject'], axis=1) 
-# sns.heatmap(test.corr())
-# plt.show()
 
-# Remove rows where any element equals zero
-# Happens on occasion (Unkown issue, possibly latency), data does not need to be replaced until after all sessions are complete
-# REMOVED FEATURE because some of the origional data has negative values
-# df_processed = df[(df != 0).all(axis=1)]
+heat_map_data = combined_df
+heat_map_data = heat_map_data.drop(['subject'], axis=1) 
+# Heatmap of combined data set
+sns.heatmap(heat_map_data.corr())
+plt.show()
 
-# Save the filtered dataset
-#df_processed.to_csv('ProcessedData.csv', index=False)
+
+df_test = df.drop(['subject'], axis=1)
+df1_test = df1.drop(['subject'], axis=1)
+
+correlation_matrix = df_test.corrwith(df1_test)
+
+# Print correlation matrix
+print(correlation_matrix)
+
