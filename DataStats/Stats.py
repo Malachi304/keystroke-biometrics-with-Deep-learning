@@ -32,6 +32,7 @@ correlation_matrix = df_new.corrwith(df_original)
 # Calculate z-scores for each column
 z_scores_original = (df_original - df_original.mean()) / df_original.std()
 z_scores_new = (df_new - df_new.mean()) / df_new.std()
+z_scores_p = (df_processed - df_processed.mean()) / df_processed.std()
 
 # Define threshold for outlier detection (z-score greater than 3 or less than -3)
 threshold = 3
@@ -40,7 +41,6 @@ threshold = 3
 outliers_original = np.abs(z_scores_original) > threshold
 outliers_new = np.abs(z_scores_new) > threshold
 
-
 # Print rows corresponding to outliers
 print("Outliers Original:")
 print(len(df_original[outliers_original.any(axis=1)]))
@@ -48,10 +48,11 @@ print(len(df_original[outliers_original.any(axis=1)]))
 print("Outliers New:")
 print(len(df_new[outliers_new.any(axis=1)]))
 
-tdf0 = df_original[outliers_original.any(axis=1)]
-tdf1 = df_new[outliers_new.any(axis=1)]
 
-tdf0.to_csv("Ouliers_og.csv")
-tdf1.to_csv("Ouiers_new.csv")
+df_outliers_original = df_original[outliers_original.any(axis=1)]
+df_outliers_new = df_new[outliers_new.any(axis=1)]
+
+df_outliers_original.to_csv("Ouliers_original.csv")
+df_outliers_new.to_csv("Ouiers_new.csv")
 
 
