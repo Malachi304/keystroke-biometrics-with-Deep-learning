@@ -1,4 +1,4 @@
-Pree Outlier Processing Correlation (New Data/ Data)
+Pree Outlier Processing Correlation scores -1 to 1 (New Data/ Data)
 -------------------------------------------------------------
 H.period          -0.006196
 DD.period.t        0.128150
@@ -31,3 +31,6 @@ H.l               -0.017894
 DD.l.Return        0.032417
 UD.l.Return        0.045018
 H.Return          -0.010170
+
+Outliers from Original Dataset: 3460
+Outliers From New Dataset: 74
