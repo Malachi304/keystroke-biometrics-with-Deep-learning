@@ -7,7 +7,8 @@ import pandas as pd
 # Load the new dataset captured from KeyCapture sessions
 df = pd.read_csv('data/newData.csv')
 #round decimal place
-df = df.round(4)
+#df = df.round(4)
+# df = df.applymap(lambda x: "{:.4f}".format(x))
 
 df1 = pd.read_csv('data/Data.csv')
 
@@ -22,6 +23,14 @@ df_combined = df[(df != 0).all(axis=1)]
 
 combined_df.to_csv('Data/ProcessedData.csv', index=False)
 print("done")
+
+import seaborn as sns
+
+import matplotlib.pyplot as plt 
+test = combined_df
+test = test.drop(['subject'], axis=1) 
+# sns.heatmap(test.corr())
+# plt.show()
 
 # Remove rows where any element equals zero
 # Happens on occasion (Unkown issue, possibly latency), data does not need to be replaced until after all sessions are complete
