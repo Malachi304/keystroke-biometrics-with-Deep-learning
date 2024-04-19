@@ -39,9 +39,11 @@ Categories from Data set for referance :
 subject,sessionIndex,rep,H.period,DD.period.t,UD.period.t,H.t,DD.t.i,UD.t.i,H.i,DD.i.e,UD.i.e,H.e,DD.e.five,UD.e.five,H.five,DD.five.Shift.r,
 UD.five.Shift.r,H.Shift.r,DD.Shift.r.o,UD.Shift.r.o,H.o,DD.o.a,UD.o.a,H.a,DD.a.n,UD.a.n,H.n,DD.n.l,UD.n.l,H.l,DD.l.Return,UD.l.Return,H.Return
 
+subjects are labled s002-s057, my personal data is s060.
+To add more data, start from s061
+
 NOTE: Subject is the label we are training for, rep and sessionindex are not important for training and may be redacted.
       The final 31 Categories are the features being passed to the model. 
-      Example of features: "UD.period.t" traslates to time between releasing '.' key (UPtime), and time pressing 't' key (DOWNtime)
 
 ### PREPROCESSING:
 
