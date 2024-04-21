@@ -32,5 +32,9 @@ DD.l.Return        0.032417
 UD.l.Return        0.045018
 H.Return          -0.010170
 -------------------------------------------------------------
-Outliers from Original Dataset: 3460
-Outliers From New Dataset: 74
+Outliers from WHOLE Original Dataset: 3460 (DO NOT REMOVE)
+Outliers From WHOLE New Dataset: 74 (DO NOT REMOVE)
+
+-Removing outliers from entire dataset with multiple typists may remove unique typing traits 
+ and as such, we will not remove these, and will instead look at outliers from specific features.
+

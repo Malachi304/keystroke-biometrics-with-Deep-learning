@@ -10,7 +10,7 @@ session_count = 1
 rep_count = 0
 
 # New row of data to add to dataset. Already includes userUniqueID, Session count, and Rep count
-rep_row = ['s060',session_count, rep_count]
+rep_row = ['s000',session_count, rep_count]
 
 # Holds times of current keystroke 
 start_times = {}; 
@@ -126,7 +126,7 @@ def release(key):
             print(f"Data appended successfully. REP: {rep_count}, Data length: {len(rep_row)}")
             # Reset for next row of data
             rep_row.clear()
-            rep_row = ['s060',session_count, rep_count]
+            rep_row = ['s000',session_count, rep_count]
 
         # This is essentially a fail-safe. 
         # If we press the enter key before the row is completed, it resets that row
@@ -138,7 +138,7 @@ def release(key):
             DownDown = None
             UpDown = None
             rep_row.clear()
-            rep_row = ['s060',session_count, rep_count]
+            rep_row = ['s000',session_count, rep_count]
             print("Invalid, reseting")
 
         # Clear key in preporation for next
