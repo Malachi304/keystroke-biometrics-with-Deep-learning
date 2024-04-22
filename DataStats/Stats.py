@@ -32,25 +32,23 @@ correlation_matrix = df_new.corrwith(df_original)
 
 
 
-
-# THE CODE BELOW NEEDS to be edited to look at outliers within specific feature columns, read DataStats/Stat-information.txt
-
-# Calculate z-scores for each column
-z_scores_original = (df_original - df_original.mean()) / df_original.std()
-z_scores_new = (df_new - df_new.mean()) / df_new.std()
-z_scores_p = (df_processed - df_processed.mean()) / df_processed.std()
-
 # Define threshold for outlier detection (z-score greater than 3 or less than -3)
 threshold = 3
+outliers_flags = pd.DataFrame(index=df_new.index, columns=df_new.columns)
+# Loop over each column
+for column in df_new.columns:
+    # Calculate z-scores for the current column
+    z_scores = (df_new[column] - df_new[column].mean()) / df_new[column].std()
+    # Identify outliers using the threshold for the current column
+    outliers_flags[column] = np.abs(z_scores) > threshold
 
-# Identify outliers in personal dataset
-outliers_new = np.abs(z_scores_new) > threshold
+# Count outliers for each column
+outliers_counts = outliers_flags.sum()
 
-print("Outliers New:")
-print(len(df_new[outliers_new.any(axis=1)]))
+# Print number of outliers for each column
+print("Number of outliers for each column in the new dataset:")
+print(outliers_counts)
 
-
-df_outliers_new = df_new[outliers_new.any(axis=1)]
 
 #df_outliers_new.to_csv("Ouiers_new.csv")
 

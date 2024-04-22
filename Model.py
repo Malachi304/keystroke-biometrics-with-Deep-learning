@@ -4,9 +4,6 @@ from sklearn.model_selection import train_test_split
 from keras.models import Sequential
 from keras.layers import Dense
 
-
-
-
 data = pd.read_csv('data/ProcessedData.csv')
 
 
@@ -37,11 +34,3 @@ model.save('AllModels/Pre-Outlier-processing.h5')
 # Evaluate the model
 loss, accuracy = model.evaluate(X_test_scaled, y_test)
 print(f'Test Loss: {loss}, Test Accuracy: {accuracy}')
-
-df = data
-df = df.drop(columns=['subject', 'target'])
-df = df.loc[3]
-
-#Process data``
-prediction = model.predict(df)
-print(prediction)
