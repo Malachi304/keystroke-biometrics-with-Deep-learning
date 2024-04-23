@@ -1,13 +1,15 @@
 import keras
 import pandas as pd 
 import joblib
-import numpy as np
 
-model = keras.models.load_model('Allmodels/Pre-Outlier-processing.h5')
-sc = joblib.load('scaler.pkl')
+model = keras.models.load_model('Saved_Models/Pre-Outlier-Processing-dropout.h5')
+sc = joblib.load('Saved_Models/scaler.pkl')
 
-data = pd.read_csv("Data/ProcessedData.csv")
-prediction_data = data.drop(columns=["subject", "target"]).iloc[33]
+origional_data = pd.read_csv("Data/ProcessedData.csv")
+prediction_data = origional_data.drop(columns=["subject", "target"]).iloc[10589]
+
+#keyboards = pd.read_csv("Data/Keyboards.csv")
+#prediction_data = keyboards.drop(columns=['subject', 'rep', 'sessionIndex']).iloc[33]
 
 prediction_data_reshaped = prediction_data.values.reshape(1, -1)
 

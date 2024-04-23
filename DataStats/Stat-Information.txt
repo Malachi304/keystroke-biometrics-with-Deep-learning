@@ -1,3 +1,9 @@
+ Strong positive correlations between the datasets may indicate that the behavior of the 
+ individual typist closely matches the average behavior of typists in the larger dataset. 
+ This suggests that the individual typist's behavior is representative of typical typist behavior.
+
+ -------------------------------------------------------------
+
 Pree Outlier Processing Correlation scores -1 to 1 (New Data/ Data)
 -------------------------------------------------------------
 H.period          -0.006196
@@ -31,7 +37,76 @@ H.l               -0.017894
 DD.l.Return        0.032417
 UD.l.Return        0.045018
 H.Return          -0.010170
+
+Post Outlier Processing Correlation, threshold=3
 -------------------------------------------------------------
+H.period           0.034380
+DD.period.t       -0.068697
+UD.period.t       -0.079541
+H.t               -0.051866
+DD.t.i             0.092292
+UD.t.i             0.037148
+H.i                0.135340
+DD.i.e             0.104428
+UD.i.e            -0.105096
+H.e               -0.117356
+DD.e.five          0.470371
+UD.e.five          0.460545
+H.five            -0.126652
+DD.five.Shift.r   -0.140075
+UD.five.Shift.r   -0.146676
+H.Shift.r          0.099504
+DD.Shift.r.o       0.130331
+UD.Shift.r.o       0.031784
+H.o               -0.010584
+DD.o.a             0.034092
+UD.o.a             0.035134
+H.a                0.287006
+DD.a.n             0.147917
+UD.a.n             0.014360
+H.n               -0.043134
+DD.n.l             0.127815
+UD.n.l             0.102444
+H.l                0.125654
+DD.l.Return        0.165063
+UD.l.Return        0.103136
+H.Return           0.150696
+
+Post Outlier Processing Correlation, threshold=2.5
+-------------------------------------------------------------
+H.period           0.092579
+DD.period.t       -0.058110
+UD.period.t       -0.037125
+H.t               -0.000178
+DD.t.i            -0.125796
+UD.t.i            -0.076263
+H.i                0.078950
+DD.i.e             0.031213
+UD.i.e            -0.112554
+H.e                0.001861
+DD.e.five          0.485064
+UD.e.five          0.479049
+H.five            -0.063268
+DD.five.Shift.r   -0.120182
+UD.five.Shift.r   -0.136468
+H.Shift.r          0.078584
+DD.Shift.r.o       0.115975
+UD.Shift.r.o       0.048885
+H.o               -0.031983
+DD.o.a             0.127909
+UD.o.a             0.045982
+H.a                0.121555
+DD.a.n             0.313630
+UD.a.n             0.018847
+H.n               -0.038368
+DD.n.l             0.173302
+UD.n.l             0.138303
+H.l                0.215655
+DD.l.Return        0.105499
+UD.l.Return        0.057324
+H.Return           0.039416
+-------------------------------------------------------------
+
 Outliers from WHOLE Original Dataset: 3460 (DO NOT REMOVE)
 Outliers From WHOLE New Dataset: 74 (DO NOT REMOVE)
 

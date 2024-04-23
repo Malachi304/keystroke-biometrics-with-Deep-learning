@@ -49,6 +49,16 @@ NOTE: Subject is the label we are training for, rep and sessionindex are not imp
 
 ### SATISTICAL ANALYSIS:
 
+Prior to any data processing, I wanted to see the correlation between the origional Roy Maxion dataset, and my own keystroke data set.
+
+I did this with Panda's correlation function. 
+The results are contained in DataStats/Stat Information, under Pre-Outlier Stats.
+
+Here, we see that many of the 'Hold' features are not very correlated with values close to 0 in both directions.
+This indicates that there is potentially some dicrepency with how hold times were recorded between the two datasets.
+
+
+
 ### CONCLUSION:
 
 ### FUTURE WORK:

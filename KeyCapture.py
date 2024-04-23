@@ -118,7 +118,7 @@ def release(key):
             rep_count = rep_count + 1
 
             # Append new row to csv       
-            with open('data/keyboards.csv', 'a', newline='') as file:
+            with open('data/newData.csv', 'a', newline='') as file:
                 writer = csv.writer(file)
                 writer.writerow(rep_row)
  
