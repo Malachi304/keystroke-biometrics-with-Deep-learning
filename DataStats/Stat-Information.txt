@@ -4,7 +4,75 @@
 
  -------------------------------------------------------------
 
-Pree Outlier Processing Correlation scores -1 to 1 (New Data/ Data)
+Difference In mean Percentage (Personal data & origional dataset)
+-------------------------------------------------------------
+H.period             7.526768
+DD.period.t          8.088480
+UD.period.t          8.395632
+H.t                  9.117130
+DD.t.i              16.617647
+UD.t.i              31.793184
+H.i                  1.869572
+DD.i.e              31.665804
+UD.i.e              53.606829
+H.e                  6.050977
+DD.e.five           18.094018
+UD.e.five           25.559437
+H.five              23.365307
+DD.five.Shift.r     25.545608
+UD.five.Shift.r     35.936792
+H.Shift.r          110.069877
+DD.Shift.r.o        16.386189
+UD.Shift.r.o        41.605471
+H.o                 17.124291
+DD.o.a               0.154746
+UD.o.a              20.225070
+H.a                  4.665951
+DD.a.n              18.180074
+UD.a.n              27.107865
+H.n                  7.520989
+DD.n.l              16.937713
+UD.n.l              35.982213
+H.l                  0.679795
+DD.l.Return         40.021227
+UD.l.Return         56.866883
+H.Return             4.276067
+
+Difference In mean Percentage (Personal, 2.5 threshold, outlier processed data & origional dataset)
+-------------------------------------------------------------
+H.period             6.004611
+DD.period.t          0.644956
+UD.period.t          4.280601
+H.t                  8.175336
+DD.t.i               5.050786
+UD.t.i              37.343723
+H.i                  0.703761
+DD.i.e              37.566234
+UD.i.e              61.133503
+H.e                  4.359320
+DD.e.five           25.420674
+UD.e.five           34.629741
+H.five              22.607443
+DD.five.Shift.r     27.956166
+UD.five.Shift.r     38.696894
+H.Shift.r          105.884070
+DD.Shift.r.o         5.260466
+UD.Shift.r.o        57.024353
+H.o                 16.740859
+DD.o.a               8.890376
+UD.o.a              24.229121
+H.a                  5.115593
+DD.a.n              22.388205
+UD.a.n              19.251502
+H.n                  6.431882
+DD.n.l              27.592117
+UD.n.l              54.291397
+H.l                  0.603614
+DD.l.Return         47.305759
+UD.l.Return         66.149340
+H.Return             1.905207
+
+Pre Outlier Processing Correlation scores -1 to 1 (New Data/ Data)
 -------------------------------------------------------------
 H.period          -0.006196
 DD.period.t        0.128150

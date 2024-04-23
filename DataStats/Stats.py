@@ -20,24 +20,27 @@ sns.heatmap(df_processed.corr())
 #plt.show()
 
 
-
 df_new.drop(columns=['subject','sessionIndex', 'rep'], inplace=True)
 df_original.drop(columns=[ 'subject', 'sessionIndex', 'rep'], inplace=True)
 df_keyboards.drop(columns=['subject', 'sessionIndex', 'rep'], inplace=True)
 
-
 correlation_matrix = df_clean.corrwith(df_original)
-
-# Print correlation matrix
 #print(correlation_matrix)
 
-df_new_sum = df_new.describe()
+df_clean = df_clean.round(4)
+df_new_sum = df_clean.describe()
 print('-=-=-=-=-=-=-=-=')
 df_origional_sum =df_original.describe()
 # Compare specific statistics, for example, mean values for each column
-mean_comparison = df_new_sum.loc['mean'] - df_origional_sum.loc['mean']
-print("\nDifference in mean values between datasets:")
-print(mean_comparison)
+mean_comparison_percentage = abs((df_new_sum.loc['mean'] - df_origional_sum.loc['mean']) / df_origional_sum.loc['mean']) * 100
+mean_comparison_raw = abs(df_new_sum.loc['mean'] - df_origional_sum.loc['mean']) 
+
+#print("\nDifference in mean values between datasets:")
+print(mean_comparison_percentage)
+#print(mean_comparison_raw)
+#print(df_new_sum)
+#print(df_origional_sum)
+
 
 # Define threshold for outlier detection (z-score greater than 3 or less than -3)
 threshold = 2.5
@@ -68,5 +71,4 @@ df_new_cleaned = df_new[~outliers_row_flags]
 
 # Save outliers only to file
 #df_outliers_new.to_csv("Ouiers_new.csv")
-
 
