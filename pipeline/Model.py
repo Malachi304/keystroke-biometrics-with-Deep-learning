@@ -7,7 +7,7 @@ from keras.layers import Dropout
 import joblib
 import keras
 
-data = pd.read_csv('data/')
+data = pd.read_csv('data/ProcessedData.csv')
 
 
 x = data.drop(columns=['subject', 'target'])
@@ -25,8 +25,10 @@ joblib.dump(scaler, 'scaler.pkl')
 
 # Define the model architecture
 model = Sequential([
-    Dense(32, activation='relu', input_shape=(31,)),
-    Dense(32, activation='relu'),
+    Dense(64, activation='relu', input_shape=(31,)),
+    Dropout(0.3),
+    Dense(64, activation='relu'),
+    Dropout(0.3),
     Dense(1, activation='sigmoid')  
 ])
 
@@ -35,7 +37,7 @@ model.compile(optimizer='adam',loss='binary_crossentropy',metrics=['accuracy'])
 
 # Train the model
 model.fit(X_train_scaled, y_train, epochs=10, batch_size=32, validation_split=0.1)
-model.save('.h5')
+model.save('Pre_Outlier-Processing_Dropout_0.3.h5')
 
 # Evaluate the model
 loss, accuracy = model.evaluate(X_test_scaled, y_test)

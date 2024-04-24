@@ -18,13 +18,6 @@ df_processed = pd.read_csv('Data/ProcessedData.csv')
 df_filtered_original = df_original[df_original['subject'] == 's020']
 
 # If you wanted to save subjects to csv
-
-
-target_subject = 's020'
-df_test = df_original
-df_test['target'] = (df_test['subject'] == target_subject).astype(int)
-df_test.drop(columns=['sessionIndex', 'rep'], inplace=True)
-df_test.to_csv("Data/Subject_so20.csv", index=False)
 #filtered_df_original.to_csv("Subject_so20.csv", index=False)
 
 # Remove non-resourcful features
@@ -35,8 +28,8 @@ df_original.drop(columns=[ 'subject', 'sessionIndex', 'rep'], inplace=True)
 df_keyboards.drop(columns=['subject', 'sessionIndex', 'rep'], inplace=True)
 
 # Heatmap of processed data 
-sns.heatmap(df_processed.corr())
-#plt.show()
+sns.heatmap(df_new.corr())
+plt.show()
 
 # Correlation matrix between two datasets
 correlation_matrix = df_new.corrwith(df_filtered_original)
