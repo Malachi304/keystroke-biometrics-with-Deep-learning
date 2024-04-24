@@ -12,6 +12,7 @@ data = pd.read_csv('data/ProcessedData.csv')
 x = data.drop(columns=['subject', 'target'])
 y = data['target']
 
+
 X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
 
 # Standardize features
@@ -24,9 +25,7 @@ joblib.dump(scaler, 'scaler.pkl')
 # Define the model architecture
 model = Sequential([
     Dense(32, activation='relu', input_shape=(31,)),
-    Dropout(.05),
     Dense(32, activation='relu'),
-    Dropout(.05),
     Dense(1, activation='sigmoid')  
 ])
 

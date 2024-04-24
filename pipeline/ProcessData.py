@@ -3,8 +3,6 @@
 #==============================================================================
 
 import pandas as pd
-# Import Outliers from both data sets
-from DataStats.Stats import Outliers_new
 
 # Load the new dataset captured from KeyCapture sessions
 df = pd.read_csv('data/newData.csv')
@@ -19,10 +17,15 @@ df= df.round(4)
 # Concatinate origional data, and new data
 combined_df = pd.concat([df1, df], axis=0)
 combined_df.drop(columns=['sessionIndex', 'rep'], inplace=True)
-combined_df.drop()
 
+
+t2 = 's057'
 # Label encoding subject, 1 for newData, 0 for origional data
 target_subject = 's060'
 combined_df['target'] = (combined_df['subject'] == target_subject).astype(int)
+#combined_df['target'] = (combined_df['subject'] == t2).astype(int)
+
 combined_df.to_csv('Data/ProcessedDataV2.csv', index=False)
+print(combined_df.info())
+print(combined_df.tail())
 

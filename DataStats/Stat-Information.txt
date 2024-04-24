@@ -1,8 +1,4 @@
- Strong positive correlations between the datasets may indicate that the behavior of the 
- individual typist closely matches the average behavior of typists in the larger dataset. 
- This suggests that the individual typist's behavior is representative of typical typist behavior.
 
- -------------------------------------------------------------
 
 Difference In mean Percentage (Personal data & origional dataset)
 -------------------------------------------------------------
@@ -14,16 +10,16 @@ DD.t.i              16.617647
 UD.t.i              31.793184
 H.i                  1.869572
 DD.i.e              31.665804
-UD.i.e              53.606829
+UD.i.e              53.606829 *
 H.e                  6.050977
 DD.e.five           18.094018
 UD.e.five           25.559437
 H.five              23.365307
 DD.five.Shift.r     25.545608
 UD.five.Shift.r     35.936792
-H.Shift.r          110.069877
+H.Shift.r          110.069877 *
 DD.Shift.r.o        16.386189
-UD.Shift.r.o        41.605471
+UD.Shift.r.o        41.605471 *
 H.o                 17.124291
 DD.o.a               0.154746
 UD.o.a              20.225070
@@ -32,13 +28,13 @@ DD.a.n              18.180074
 UD.a.n              27.107865
 H.n                  7.520989
 DD.n.l              16.937713
-UD.n.l              35.982213
+UD.n.l              35.982213 *
 H.l                  0.679795
-DD.l.Return         40.021227
-UD.l.Return         56.866883
+DD.l.Return         40.021227 *
+UD.l.Return         56.866883 *
 H.Return             4.276067
 
-Difference In mean Percentage (Personal, 2.5 threshold, outlier processed data & origional dataset)
+Difference In mean Percentage (Post outlier processing w/ 2.5 threshold)
 -------------------------------------------------------------
 H.period             6.004611
 DD.period.t          0.644956
@@ -72,7 +68,12 @@ DD.l.Return         47.305759
 UD.l.Return         66.149340
 H.Return             1.905207
 
-Pre Outlier Processing Correlation scores -1 to 1 (New Data/ Data)
+                                                                      
+
+Pre Outlier Processing Correlation scores -1 to 1 (New Data/ Data).
+    Strong positive correlations between the datasets may indicate that the behavior of the 
+    individual typist closely matches the average behavior of typists in the larger dataset. 
+    This suggests that the individual typist's behavior is representative of typical typist behavior.
 -------------------------------------------------------------
 H.period          -0.006196
 DD.period.t        0.128150
