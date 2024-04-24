@@ -5,8 +5,9 @@ from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import Dropout
 import joblib
+import keras
 
-data = pd.read_csv('data/ProcessedData.csv')
+data = pd.read_csv('data/Subject_so20.csv')
 
 
 x = data.drop(columns=['subject', 'target'])
@@ -34,7 +35,7 @@ model.compile(optimizer='adam',loss='binary_crossentropy',metrics=['accuracy'])
 
 # Train the model
 model.fit(X_train_scaled, y_train, epochs=10, batch_size=32, validation_split=0.1)
-model.save('Saved_models/Pre-Outlier-Processing-dropout.h5')
+model.save('Test_s020.h5')
 
 # Evaluate the model
 loss, accuracy = model.evaluate(X_test_scaled, y_test)

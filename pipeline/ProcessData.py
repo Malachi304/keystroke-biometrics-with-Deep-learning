@@ -12,20 +12,17 @@ df1 = pd.read_csv('data/Data.csv')
 df= df.round(4)
 
 # Tried to make data cleaner to look at by adding trailing zeros 
-#Combined_df = df.applymap(lambda x: "{:.4f}".format(x))
 
 # Concatinate origional data, and new data
 combined_df = pd.concat([df1, df], axis=0)
 combined_df.drop(columns=['sessionIndex', 'rep'], inplace=True)
 
 
-t2 = 's057'
 # Label encoding subject, 1 for newData, 0 for origional data
 target_subject = 's060'
 combined_df['target'] = (combined_df['subject'] == target_subject).astype(int)
-#combined_df['target'] = (combined_df['subject'] == t2).astype(int)
 
-combined_df.to_csv('Data/ProcessedDataV2.csv', index=False)
+combined_df.to_csv('Data/ProcessedData.csv', index=False)
 print(combined_df.info())
 print(combined_df.tail())
 
