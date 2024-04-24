@@ -1,7 +1,7 @@
-Keyboard1 : lenovo |
+Keyboard1 : lenovo | Slim Pro-7 14ARP8
 Keyboard2 : HP | 803181-001
 Keyboard3 : Dell | L100
 Keyboard4 : IBUYPower | GKB100
 Keyboard5 : HyperX | AG001
-Keyboard6 : Microsoft Natural Ergonomic | 1048
-Keyboard7 : Havit Mechanical Gaming | HV-KB380L
+Keyboard6 : Microsoft |  Natural Ergonomic 1048
+Keyboard7 : Havit | Mechanical Gaming HV-KB380L
