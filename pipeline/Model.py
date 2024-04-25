@@ -7,8 +7,8 @@ from keras.layers import Dropout
 import joblib
 import keras
 
-data = pd.read_csv('data/ProcessedData.csv')
 
+data = pd.read_csv('data/ProcessedData.csv')
 
 x = data.drop(columns=['subject', 'target'])
 y = data['target']
@@ -37,7 +37,7 @@ model.compile(optimizer='adam',loss='binary_crossentropy',metrics=['accuracy'])
 
 # Train the model
 model.fit(X_train_scaled, y_train, epochs=10, batch_size=32, validation_split=0.1)
-model.save('Pre_Outlier-Processing_Dropout_0.3.h5')
+model.save('YOUR_MODEL_NAME.h5')
 
 # Evaluate the model
 loss, accuracy = model.evaluate(X_test_scaled, y_test)
