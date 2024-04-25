@@ -2,20 +2,17 @@ import keras
 import pandas as pd 
 import joblib
 
-model = keras.models.load_model('Saved_Models/Pre-Outlier-processing.h5')
+# Load Model
+model = keras.models.load_model('Saved_Models/s060.h5')
+# Load scaler used to train
 sc = joblib.load('Saved_Models/scaler.pkl')
-
-#origional_data = pd.read_csv("Data/ProcessedData.csv")
-#prediction_data = origional_data.drop(columns=["subject", "target"]).iloc[1000]
-
-#new_data = pd.read_csv('data/newData.csv')
-#new_data.drop(columns=['subject', 'sessionIndex', 'rep'])
-
+# Load dataset with all keystroke data from subject s060
 keyboards = pd.read_csv("Data/Keyboards.csv")
 
 
 FalseAcceptance_count = 0
 Acceptance_count = 0
+# Number of data each keyboard has in dataset
 n = 0
 
 # Specify the target value for the 'subject' column
@@ -41,6 +38,7 @@ for index, row in filtered_rows.iterrows():
         
     n = n + 1
 
+# Calculations 
 print(f'False Acceptance rate {target_value}: {FalseAcceptance_count/n}')
 print(f'Acceptance rate {target_value}: {Acceptance_count/n}')
 print(f'Data Quantity: {n}')
